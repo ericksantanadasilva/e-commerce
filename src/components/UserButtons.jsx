@@ -1,10 +1,17 @@
+import { useContext } from 'react';
+import { CartContext } from '../contexts/CartContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faUser } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const UserButtons = () => {
+  const cartInfo = useContext(CartContext);
   return (
     <div>
-      <button className='px-2 relative'>
+      <button
+        className='px-2 relative'
+        onClick={() => cartInfo.setIsCartOpen(true)}
+      >
         <FontAwesomeIcon icon={faCartShopping} />
         <div
           id='cart-amount'
@@ -13,9 +20,9 @@ const UserButtons = () => {
           3
         </div>
       </button>
-      <a>
+      <Link to='/history'>
         <FontAwesomeIcon className='px-2' icon={faUser} />
-      </a>
+      </Link>
     </div>
   );
 };
