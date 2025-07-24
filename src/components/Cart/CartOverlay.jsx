@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import { CartContext } from '../../contexts/CartContext';
+import { useCartContext } from '../../contexts/CartContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import CartProducts from './CartProducts';
@@ -7,7 +6,7 @@ import TotalPriceCell from './TotalPriceCell';
 import { Link } from 'react-router-dom';
 
 const CartOverlay = () => {
-  const { toogleIsCartOpen, isCartOpen } = useContext(CartContext);
+  const { toogleIsCartOpen, isCartOpen } = useCartContext();
   return (
     <div
       className={`h-screen w-screen fixed top-0 left-0 flex z-50 ease-in-out duration-200 ${
