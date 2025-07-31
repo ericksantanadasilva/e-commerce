@@ -1,5 +1,6 @@
 import { useCartContext } from '../../contexts/CartContext';
 import CartItem from './CartItem';
+import SimpleCartItem from './SimpleCartItem';
 
 const CartProducts = ({ isHomePage = true }) => {
   const { cartItems } = useCartContext();
@@ -14,9 +15,13 @@ const CartProducts = ({ isHomePage = true }) => {
         isHomePage ? 'h-3/5' : ''
       }`}
     >
-      {cartItemsArray.map((product) => (
-        <CartItem {...product} key={`key_${product.id}`} />
-      ))}
+      {cartItemsArray.map((product) => {
+        return isHomePage ? (
+          <CartItem {...product} key={`key_${product.id}`} />
+        ) : (
+          <SimpleCartItem {...product} key={`key_${product.id}`} />
+        );
+      })}
     </section>
   );
 };
